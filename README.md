@@ -46,7 +46,3 @@ pihole restartdns
 **bind9 docker**
 
 This server functions as an authoritative-only domain name server with  one zone (command.control). It is invaluable for both learning and  development. Utilizing Wireshark, you can observe a portion of the DNS  resolution process when a query is sent by the client/agent.
-
-file:///./tests/Screenshot%20from%202023-11-19%2011-55-22.png
-
- [Screenshot from 2023-11-19 11-56-56.png-30:-34:84:51](tests/Screenshot from 2023-11-19 11-56-56.png-30:-34:84:51) 
