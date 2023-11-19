@@ -1,0 +1,29 @@
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get update && apt-get install -y \
+    net-tools \
+    nano \
+    dnsutils \
+    bind9 \
+    bind9utils \
+    bind9-doc
+
+COPY conf/named.conf.options /etc/bind/
+COPY conf/named.conf.local /etc/bind/
+COPY conf/named.conf /etc/bind/
+COPY conf/db.adiami.com /etc/bind/zones/db.adiami.com
+
+EXPOSE 53/udp 22
+
+RUN mkdir /var/run/sshd && \
+    echo 'root:123' | chpasswd && \
+    sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
+    mkdir -p /var/log/named && \
+    touch /var/log/named/example.log && \
+    chmod 666 /var/log/named/example.log
+
+
+# Specify the command to run when a container is started from this image
+CMD ["bash"]

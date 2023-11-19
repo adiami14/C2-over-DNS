@@ -1,0 +1,18 @@
+FROM pihole/pihole
+
+RUN apt-get update && apt-get install -y \
+    net-tools \
+    dnsutils \
+    nano \
+    iputils-ping \
+    python3-pip \
+    && apt-get clean
+
+COPY conf/setupVars.conf /etc/pihole/setupVars.conf
+
+RUN pip install --upgrade pip && \
+    pip install netifaces && \
+    pip install scapy
+
+
+CMD ["bash"]

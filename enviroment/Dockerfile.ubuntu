@@ -1,0 +1,23 @@
+FROM ubuntu:20.04
+
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get update && apt-get install -y \
+    net-tools \
+    nano \
+    nmap \
+    dnsutils \
+    iputils-ping \
+    ftp \
+    tcpdump \
+    iproute2 \
+    openssh-client \
+    python3 \
+    netcat \
+    python3-pip 
+
+RUN pip install scapy \
+    pip install libpcap \
+    pip install netifaces	
+
+CMD ["bash"]
