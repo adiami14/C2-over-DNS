@@ -8,7 +8,7 @@ check_and_build_image() {
     if [[ -z $(docker images -q $image_name) ]]; then
         # If the image doesn't exist, build it
         echo "$image_name image not found. Building..."
-        docker build -t $image_name -f $dockerfile .
+        docker build -t $image_name -f $(pwd)/$dockerfile .
     else
         # If the image exists, print a message and continue
         echo "$image_name image already exists. Continuing..."
@@ -36,7 +36,7 @@ UB_CLIENT_NAME="c2_client"
 UB_SERVER_NAME="c2_server"
 
 AUTH_DNS="authoritative-dns"
-AUTH_DNS_DOCKERFILE="Dockerfile.authoritative"
+AUTH_DNS_DOCKERFILE="Dockerfile.authorative"
 AT_DOCK_NAME=$AUTH_DNS
 
 DNS_IMAGE="pihole/pihole"
@@ -46,7 +46,7 @@ DNS_DOCK_NAME="dns_server"
 NETWORK_client="DNS_client"
 NETWORK_server="DNS_c2_server"
 
-echo -e "\n\n\t1. Build the docker enviroment\n\t2. Remove containers\n\t3. Remove Containers and images\n\t4. Remove a specific docker"
+echo -e "\n\n\t1. Build the docker enviroment\n\t2. Remove containers\n\t3. Remove All Containers and images\n\t4. Remove a specific docker"
 read choise
 
 case $choise in

@@ -15,6 +15,7 @@ if __name__ == "__main__":
     # Master parser
     master_parser = subparsers.add_parser("M", help='start as C2 Server -- waiting for beacon')
     master_parser.add_argument('-d', '--domain', required=False, help="domain name")
+    master_parser.add_argument('-ip', '--DNS-server', required=True, help="DNS server IP")
     master_parser.add_argument('-iface', required=True, help="The name of the interface being used")
     master_parser.add_argument('--file', required=False, help='(Relevant only in Server - File to write the agent output in - default {file})')
     master_parser.add_argument('--debug', action='store_true', help="Enable debug mode")
@@ -48,7 +49,7 @@ if __name__ == "__main__":
         except ValueError:
             logger.critical("[**] You must specify a valid interface name")
             sys.exit(1)
-        server = C2_DNS_SERVER(domain, logger, iface, file=file, max_payload_size=max_size)
+        server = C2_DNS_SERVER(domain, logger, iface, args.DNS_server, file=file, max_payload_size=max_size)
         server.run()
     else:
         logger.info("[!] Running as Agent")

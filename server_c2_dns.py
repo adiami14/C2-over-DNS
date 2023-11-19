@@ -103,7 +103,6 @@ class C2_DNS_SERVER:
 if '__main__' == __name__:
     domain = "c2.dns"   
     iface = 'eth0'
-    dns_server = '192.168.3.3'
     logger = Create_Logger_Object(logging.DEBUG)
 
     c2_server = C2_DNS_SERVER(domain, logger, iface, dns_server)

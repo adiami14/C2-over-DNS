@@ -6,9 +6,9 @@
 // organization
 //include "/etc/bind/zones.rfc1918";
 
-zone "adiami.com" {
+zone "command.control" {
 	type master;
-	file "/etc/bind/zones/db.adiami.com";
+	file "/etc/bind/zones/db.command.control";
 	allow-transfer { any; };
 };
 
