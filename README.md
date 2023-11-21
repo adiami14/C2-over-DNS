@@ -19,7 +19,7 @@ cd C2-over-DNS/enviroment/
 ./build_env.sh
 ```
 
-type ``1` and press `Enter` to build the environment for the project or for your own code. Inside the Docker containers, the  /data directory is the project directory shared with the host.
+type `1` and press `Enter` to build the environment for the project or for your own code. Inside the Docker containers, the  /data directory is the project directory shared with the host.
 
 **Example**
 
